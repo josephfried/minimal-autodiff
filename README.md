@@ -1,17 +1,22 @@
 # Tiny Reverse-Mode Autodiff in Python
 
 A compact, educational implementation of **scalar reverse-mode automatic differentiation**, inspired by Ben Clarkson’s excellent blog post:
-[https://bclarkson-code.com/posts/llm-from-scratch-scalar-autograd/post.html](https://bclarkson-code.com/posts/llm-from-scratch-scalar-autograd/post.html)
 
-This version is rewritten from scratch in a clean, minimal **Python 3.12** style.
+https://bclarkson-code.com/posts/llm-from-scratch-scalar-autograd/post.html
+
+This version is a simplified, clean Python 3.12 implementation, with code adapted and rewritten to match my own learning goals.
+
 It demonstrates the core ideas behind frameworks like PyTorch and JAX in just a few dozen lines of code.
+
+See the full technical report explaining reverse-mode autodiff:  [report.md](./report.md)
+
 
 ## Features
 
 * Scalar `Tensor` class (each node holds a single float)
 * Reverse-mode autodiff with an explicit computation DAG
 * Depth-first topological graph construction
-* Gradient accumulation via the chain rule
+* Derivative accumulation via the chain rule
 * Operator overloading for `+`, `-`, `*`
 * Mixes naturally with Python `int` / `float`
 * `clear_derivatives()` to reset gradients between backward passes

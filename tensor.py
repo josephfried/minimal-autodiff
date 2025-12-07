@@ -10,10 +10,10 @@ class Tensor:
         #store args references when they become available, using built-in Python tuple, to build up the computation graph
         self.args: tuple[Tensor] = None # old version was ()  
 
-        #store partial derivatives of the inputs to use in gradient calculations on the backprob path
+        #store partial derivatives of the inputs to use in derivative calculations on the backprob path
         self.local_derivatives: tuple[Tensor] = None #old version was ()
 
-        #placeholder to store the gradient of the final output wrt this tensor, to be computed during backpropagation
+        #placeholder to store the derivative of the final output wrt this tensor, to be computed during backpropagation
         self.derivative: Optional[Tensor] = None
         #self.derivative = Tensor(0.0)  # possible swap to try later later to try to eliminate Optional
 
@@ -24,8 +24,8 @@ class Tensor:
     # build topological order
     #
     # requires as input:
-    # order: list["Tensor"] = [] # will contain the Tensors in topological order
-    # visited: set["Tensor"] = set() # used to track seen Tensors while building the topological list
+    # order: list[Tensor] = [] # will contain the Tensors in topological order
+    # visited: set[Tensor] = set() # used to track seen Tensors while building the topological list
  
     def build_topo(self, order:list[Tensor], visited:set[Tensor]):
         if self in visited:
